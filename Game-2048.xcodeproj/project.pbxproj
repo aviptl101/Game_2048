@@ -56,15 +56,47 @@
 		E1E5A14B26A17168000409DC /* Game-2048 */ = {
 			isa = PBXGroup;
 			children = (
+				E1E5A16F26A1F2ED000409DC /* Controllers */,
+				E1E5A17126A1F30D000409DC /* ViewModels */,
+				E1E5A17026A1F300000409DC /* Views */,
+				E1E5A17226A1F319000409DC /* Helpers */,
 				E1E5A14C26A17168000409DC /* AppDelegate.swift */,
 				E1E5A14E26A17168000409DC /* SceneDelegate.swift */,
-				E1E5A15026A17168000409DC /* ViewController.swift */,
 				E1E5A15226A17168000409DC /* Main.storyboard */,
 				E1E5A15526A17169000409DC /* Assets.xcassets */,
 				E1E5A15726A17169000409DC /* LaunchScreen.storyboard */,
 				E1E5A15A26A17169000409DC /* Info.plist */,
 			);
 			path = "Game-2048";
+			sourceTree = "<group>";
+		};
+		E1E5A16F26A1F2ED000409DC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1E5A15026A17168000409DC /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E1E5A17026A1F300000409DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1E5A17126A1F30D000409DC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E1E5A17226A1F319000409DC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
