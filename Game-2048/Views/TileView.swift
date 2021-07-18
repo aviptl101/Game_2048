@@ -75,6 +75,7 @@ class TileView: UIView {
             self.position = square.position
             if curSquare.isMerging {
                 self.value *= 2
+                self.gameVM?.score += self.value
             } else if curSquare.isRemoving {
                 self.removeAction()
             }
