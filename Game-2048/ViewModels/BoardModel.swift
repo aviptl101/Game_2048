@@ -68,6 +68,17 @@ class BoardModel {
         }
     }
     
+    func getBoardState() -> String {
+        var stateString = ""
+        for row in 0..<dimension {
+            for col in 0..<dimension {
+                let square = squaresList[row][col]
+                stateString += String(square.value)
+            }
+        }
+        return stateString
+    }
+    
     func displaySquareValues() {
         /*
         print("\n")
