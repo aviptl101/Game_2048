@@ -52,6 +52,7 @@ class GameViewModel {
             y_pos += padding + tileWidth
         }
         addRandomTile()
+        addRandomTile()
         //self.setTestTiles()
     }
     

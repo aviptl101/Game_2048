@@ -18,7 +18,7 @@ class TileView: UIView {
     
     private let valueLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        label.font = UIFont.tile.x
+        label.font = UIFont.tile.x4
         label.textColor = .white
         label.textAlignment = .center
         label.lineBreakMode = .byCharWrapping
@@ -59,7 +59,7 @@ class TileView: UIView {
 
         guard let nextSquare = boardVM?.getNextSquare(position: position) else  {
             if curSquare.isRemoving {
-                self.removeFromSuperview()
+                self.removeAction()
             }
             return
         }
@@ -76,12 +76,18 @@ class TileView: UIView {
             if curSquare.isMerging {
                 self.value *= 2
             } else if curSquare.isRemoving {
-                self.removeFromSuperview()
+                self.removeAction()
             }
         }
     }
     
-    func updateUI() {
+    func removeAction() {
+        isHidden = true
+        value = 0
+        self.removeFromSuperview()
+    }
+    
+    private func updateUI() {
         DispatchQueue.main.async {
             self.valueLabel.text = String(self.value)
             if self.value > 10 && self.value < 99 {
@@ -90,6 +96,35 @@ class TileView: UIView {
                 self.valueLabel.font = UIFont.tile.x2
             } else if self.value > 999 {
                 self.valueLabel.font = UIFont.tile.x
+            }
+            
+            if self.value <= 64 {
+                self.valueLabel.textColor = .square
+            } else {
+                self.valueLabel.textColor = .white
+            }
+            
+            switch self.value {
+            case 2:
+                self.backgroundColor = .s2
+            case 4:
+                self.backgroundColor = .s4
+            case 8:
+                self.backgroundColor = .s8
+            case 16:
+                self.backgroundColor = .s16
+            case 32:
+                self.backgroundColor = .s32
+            case 64:
+                self.backgroundColor = .s64
+            case 128:
+                self.backgroundColor = .s128
+            case 256:
+                self.backgroundColor = .s256
+            case 512:
+                self.backgroundColor = .s512
+            default:
+                self.backgroundColor = .s128
             }
         }
     }

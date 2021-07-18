@@ -9,6 +9,18 @@ import UIKit
 
 extension UIColor {
     static let square = UIColor(netHex: 0xBDAB94)
+    static let s2 = UIColor(netHex: 0xEEFFF0)
+    static let s4 = UIColor(netHex: 0xA3FFED)
+    static let s8 = UIColor(netHex: 0x9BFFAB)
+    static let s16 = UIColor(netHex: 0xD3FF7A)
+    static let s32 = UIColor(netHex: 0x50FFB5)
+    static let s64 = UIColor(netHex: 0x00FFFE)
+
+    static let s128 = UIColor(netHex: 0x0DB2FF)
+    static let s256 = UIColor(netHex: 0x0DB2FF)
+    static let s512 = UIColor(netHex: 0x0DB2FF)
+    static let s1024 = UIColor(netHex: 0x0DB2FF)
+    static let s2048 = UIColor(netHex: 0x0DB2FF)
     
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
