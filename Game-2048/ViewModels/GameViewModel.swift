@@ -19,7 +19,10 @@ class GameViewModel {
     var boardModel: BoardModel!
     var swipeDirection = SwipeDirection.left
     var isSwipeLocked = false
+    var isGameOver = false
     var dimension = 4
+    
+    var gameOver: (() -> ())?
     
     init(view: UIView, board: BoardModel) {
         self.boardView = view
@@ -52,7 +55,7 @@ class GameViewModel {
         }
 //        addRandomTile()
 //        addRandomTile()
-        self.setTestTiles()
+//        self.setTestTiles()
     }
     
     func swipeAction(for direction: SwipeDirection) {
@@ -212,14 +215,44 @@ class GameViewModel {
         boardView.addSubview(tile)
     }
     
+    func checkGameOver() {
+        // GameOver check after adding newTile, if Board has become full
+        guard boardModel.tilesCount == (dimension * dimension) else { return }
+        
+        let directions: [SwipeDirection] = [.left, .right, .up, .down]
+        for direction in directions {
+            switch direction {
+            case .left:
+                calculateLeftSwipe()
+            case .right:
+                calculateRightSwipe()
+            case .up:
+                calculateUpSwipe()
+            case .down:
+                calculateDownSwipe()
+            }
+            if boardModel.boardHasChange() {
+                return
+            }
+        }
+        presentGameOver()
+    }
+    
+    func presentGameOver() {
+        isGameOver = true
+        gameOver?()
+    }
+    
     func setTestTiles() {
         var positions = [(0, 0), (0, 1), (0, 2), (0, 3)]
         positions.append(contentsOf: [(1, 0), (1, 1), (1, 2), (1, 3)])
         positions.append(contentsOf: [(2, 0), (2, 1), (2, 2), (2, 3)])
-        
-        var values = [2, 2, 2, 2]
-        values.append(contentsOf: [4, 4, 4, 4])
-        values.append(contentsOf: [8, 8, 8, 8])
+        positions.append(contentsOf: [(3, 0), (3, 1), (3, 2), (3, 3)])
+
+        var values = [2, 8, 2, 8]
+        values.append(contentsOf: [4, 2, 4, 2])
+        values.append(contentsOf: [2, 8, 2, 8])
+        values.append(contentsOf: [4, 2, 4, 2])
 
         for i in 0..<positions.count {
             let pos = positions[i]

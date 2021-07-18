@@ -9,13 +9,20 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var boardView: UIView!
+    @IBOutlet weak var gameOverLabel: UILabel!
     var gameVM: GameViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.gameOverLabel.isHidden = true
+        
         let boardModel = BoardModel(dimension: 4)
         gameVM = GameViewModel(view: boardView, board: boardModel)
+        gameVM.gameOver = {
+            self.gameOverLabel.isHidden = false
+        }
+        gameVM.setTestTiles()
         setupSwipeGestures()
     }
     

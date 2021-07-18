@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="_048" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Game_2048" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,6 +22,12 @@
                                     <constraint firstAttribute="width" secondItem="7rs-xy-po4" secondAttribute="height" multiplier="1:1" id="uf6-zf-S51"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vC4-sX-ttr">
+                                <rect key="frame" x="104" y="680" width="206" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -29,16 +35,19 @@
                             <constraint firstItem="7rs-xy-po4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="6sN-cZ-vOP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7rs-xy-po4" secondAttribute="trailing" constant="5" id="g9h-vj-0Xd"/>
                             <constraint firstItem="7rs-xy-po4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hXq-nY-0bC"/>
+                            <constraint firstItem="vC4-sX-ttr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iHq-Kp-3pd"/>
                             <constraint firstItem="7rs-xy-po4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ijb-Gh-BVa"/>
+                            <constraint firstItem="vC4-sX-ttr" firstAttribute="top" secondItem="7rs-xy-po4" secondAttribute="bottom" constant="30" id="lH1-OG-X8R"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="boardView" destination="7rs-xy-po4" id="oDv-05-ox9"/>
+                        <outlet property="gameOverLabel" destination="vC4-sX-ttr" id="k9z-8c-VcR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="23" y="42"/>
+            <point key="canvasLocation" x="-35" y="42"/>
         </scene>
     </scenes>
 </document>
