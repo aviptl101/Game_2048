@@ -139,6 +139,41 @@ class GameViewModel {
         curSquare.steps = steps
     }
     
+    func getNextSquare(position: (row: Int, col: Int)) -> SquareView? {
+        boardModel.curPosition = position
+        let square = boardModel.curSquare
+        let steps = square?.steps ?? 0
+        return getSquareFor(position: position, steps: steps)
+    }
+    
+    /// Based on the steps calculated, returning new square for each position in the swipeDirection
+    func getSquareFor(position: (row: Int, col: Int), steps: Int) -> SquareView? {
+        var newPosition = (row: 0, col: 0)
+        
+        switch swipeDirection {
+        case .left:
+            if position.col == 0 { return nil }
+            newPosition = (row: position.row, col: position.col - steps)
+        case .right:
+            if position.col + steps >= dimension { return nil }
+            newPosition = (row: position.row, col: position.col + steps)
+        case .up:
+            if position.row == 0 { return nil }
+            newPosition = (row: position.row - steps, col: position.col)
+        case .down:
+            if position.row + steps >= dimension { return nil }
+            newPosition = (row: position.row + steps, col: position.col)
+        }
+        
+        // Preventing from array outOfBound exceptions, returning nil for exceptions
+        if ((newPosition.row * newPosition.col) >= 0) && ((newPosition.row * newPosition.col) < (dimension * dimension)) {
+            let nextSquare = boardModel.squaresList[newPosition.row][newPosition.col]
+            return nextSquare
+        } else {
+            return nil
+        }
+    }
+    
     func setTestTiles() {
         var positions = [(0, 0), (0, 1), (0, 2), (0, 3)]
         
