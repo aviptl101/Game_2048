@@ -97,6 +97,7 @@ class BoardModel {
                 square.value = 0
                 square.isMerging = false
                 square.isRemoving = false
+                square.adjacentSquare = nil
             }
         }
     }
