@@ -29,10 +29,12 @@ class GameViewModel {
         setupSquareViews()
     }
     
+    /// Placing squares in boardView according to rows and columns for DxD matrix form
     private func setupSquareViews() {
         let width = boardView.frame.width
         let maxTiles = CGFloat(dimension)
         let padding: CGFloat = 10
+        // calculating Tile width according to numberOfTiles and width available
         let tileWidth: CGFloat = (width - ((maxTiles + 1) * padding)) / maxTiles
         
         var x_pos = padding
@@ -53,5 +55,60 @@ class GameViewModel {
     
     func swipeAction(for direction: SwipeDirection) {
         // TODO: make action calls
+    }
+    
+    /// calculating steps/moves for each square with Adjacent square in Swipe direction
+    func calculateLeftSwipe() {
+        for row in 0..<dimension {
+            for col in 1..<dimension {
+                boardModel.curPosition = (row: row, col: col)
+                evaluateWithAdjacentSquare(square: boardModel.leftSquare)
+            }
+        }
+    }
+    
+    func calculateRightSwipe() {
+        for row in 0..<dimension {
+            for col in stride(from: (dimension-2), to: -1, by: -1) {
+                boardModel.curPosition = (row: row, col: col)
+                evaluateWithAdjacentSquare(square: boardModel.rightSquare)
+            }
+        }
+    }
+    
+    func calculateUpSwipe() {
+        for col in 0..<dimension {
+            for row in 1..<dimension {
+                boardModel.curPosition = (row: row, col: col)
+                evaluateWithAdjacentSquare(square: boardModel.upSquare)
+            }
+        }
+    }
+    
+    func calculateDownSwipe() {
+        for col in 0..<dimension {
+            for row in stride(from: (dimension-2), to: -1, by: -1) {
+                boardModel.curPosition = (row: row, col: col)
+                evaluateWithAdjacentSquare(square: boardModel.downSquare)
+            }
+        }
+    }
+    
+    /// Evaluating square with its adjacent square in swipe direction to determine no. of steps for the square
+    /// 1. if adjacent square is empty, square's steps increase by one
+    /// 2. if square and adSquare have same values, square's steps increase by one, square will Merge, adSquare will be removed
+    func evaluateWithAdjacentSquare(square: SquareView?) {
+        guard let curSquare = boardModel.curSquare else { return }
+        guard let adjSquare = square else { return }
+        
+        var steps = 0
+        steps = adjSquare.steps
+        if adjSquare.value == 0 {
+            steps += 1
+        }
+        if boardModel.posValue > 0 && boardModel.posValue == adjSquare.value {
+            steps += 1
+        }
+        curSquare.steps = steps
     }
 }
