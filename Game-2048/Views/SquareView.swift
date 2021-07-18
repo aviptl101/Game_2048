@@ -8,7 +8,9 @@
 import UIKit
 
 class SquareView: UIView {
-    
+    var position = (row: -1, col: -1)
+    var value = 0
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
