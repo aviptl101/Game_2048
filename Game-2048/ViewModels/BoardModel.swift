@@ -67,4 +67,35 @@ class BoardModel {
             return nil
         }
     }
+    
+    func displaySquareValues() {
+        print("\n")
+        for row in 0..<dimension {
+            let square1 = squaresList[row][0]
+            let square2 = squaresList[row][1]
+            let square3 = squaresList[row][2]
+            let square4 = squaresList[row][3]
+
+            print("\(square1.steps) \(square2.steps) \(square3.steps) \(square4.steps)")
+        }
+        print("\n")
+        for row in 0..<dimension {
+            let square1 = squaresList[row][0]
+            let square2 = squaresList[row][1]
+            let square3 = squaresList[row][2]
+            let square4 = squaresList[row][3]
+
+            print("\(square1.value) \(square2.value) \(square3.value) \(square4.value)")
+        }
+    }
+    
+    func resetValues() {
+        for row in 0..<dimension {
+            for col in 0..<dimension {
+                let square = squaresList[row][col]
+                square.steps = 0
+                square.value = 0
+            }
+        }
+    }
 }
