@@ -55,6 +55,7 @@ class GameViewModel {
     
     func swipeAction(for direction: SwipeDirection) {
         if !isSwipeLocked {
+            // locking swipeAction briefly for Tiles animation time
             isSwipeLocked = true
             swipeDirection = direction
             
@@ -69,9 +70,12 @@ class GameViewModel {
                 calculateDownSwipe()
             }
             //boardModel.displaySquareValues()
+            NotificationCenter.default.post(name: .swipeAction, object: nil)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                 self.isSwipeLocked = false
                 self.boardModel.resetValues()
+                NotificationCenter.default.post(name: .updateBoard, object: nil)
+                self.setTestTiles()
                 self.boardModel.displaySquareValues()
             }
         }
@@ -133,5 +137,24 @@ class GameViewModel {
             adjSquare.isRemoving = true
         }
         curSquare.steps = steps
+    }
+    
+    func setTestTiles() {
+        var positions = [(0, 0), (0, 1), (0, 2), (0, 3)]
+        
+        var values = [2, 2, 2, 2]
+
+        for i in 0..<positions.count {
+            let pos = positions[i]
+            guard let sqr = boardModel.getSquare(for: pos) else { return }
+            sqr.value = values[i]
+
+            let tile = TileView(frame: sqr.frame)
+            tile.value = values[i]
+            tile.boardVM = self
+            tile.position = sqr.position
+            tile.updateBoardValue()
+            boardView.addSubview(tile)
+        }
     }
 }
