@@ -51,6 +51,7 @@ class GameViewModel {
             }
             y_pos += padding + tileWidth
         }
+        self.setTestTiles()
     }
     
     func swipeAction(for direction: SwipeDirection) {
@@ -75,7 +76,6 @@ class GameViewModel {
                 self.isSwipeLocked = false
                 self.boardModel.resetValues()
                 NotificationCenter.default.post(name: .updateBoard, object: nil)
-                self.setTestTiles()
                 self.boardModel.displaySquareValues()
             }
         }
