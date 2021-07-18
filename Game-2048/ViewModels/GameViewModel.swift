@@ -51,7 +51,8 @@ class GameViewModel {
             }
             y_pos += padding + tileWidth
         }
-        self.setTestTiles()
+        addRandomTile()
+        //self.setTestTiles()
     }
     
     func swipeAction(for direction: SwipeDirection) {
@@ -76,6 +77,7 @@ class GameViewModel {
                 self.isSwipeLocked = false
                 self.boardModel.resetValues()
                 NotificationCenter.default.post(name: .updateBoard, object: nil)
+                self.addRandomTile()
                 self.boardModel.displaySquareValues()
             }
         }
@@ -180,6 +182,25 @@ class GameViewModel {
         } else {
             return nil
         }
+    }
+    
+    func addRandomTile() {
+        var squaresList = boardModel.squaresList.flatMap{ $0.filter{ $0.value == 0 } }
+        guard let randomSqr1 = squaresList.randomElement() else { return }
+        
+        squaresList.removeAll { value in
+            return value == randomSqr1
+        }
+        
+        let values = [2, 4]
+        let randVal = values.randomElement()
+        
+        let tile = TileView(frame: randomSqr1.frame)
+        tile.value = randVal ?? 2
+        tile.boardVM = self
+        tile.position = randomSqr1.position
+        tile.updateBoardValue()
+        boardView.addSubview(tile)
     }
     
     func setTestTiles() {

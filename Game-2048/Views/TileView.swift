@@ -22,7 +22,7 @@ class TileView: UIView {
         label.textColor = .white
         label.textAlignment = .center
         label.lineBreakMode = .byCharWrapping
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         return label
     }()
     
