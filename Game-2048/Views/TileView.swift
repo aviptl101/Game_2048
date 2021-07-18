@@ -52,4 +52,19 @@ class TileView: UIView {
     @objc func swipeAction() {
         
     }
+    
+    func moveTile(to square: SquareView) {
+        guard let curSquare = boardVM?.boardModel.getSquare(for: position) else { return }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.center = square.center
+        } completion: { (status) in
+            self.position = square.position
+            if curSquare.isMerging {
+                self.value *= 2
+            } else if curSquare.isRemoving {
+                self.removeFromSuperview()
+            }
+        }
+    }
 }
