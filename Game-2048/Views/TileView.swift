@@ -46,11 +46,20 @@ class TileView: UIView {
     }
     
     @objc func updateBoardValue() {
-        
+        guard let curSquare = boardVM?.boardModel.getSquare(for: position) else { return }
+        curSquare.value = value
     }
 
     @objc func swipeAction() {
-        
+        guard let curSquare = boardVM?.boardModel.getSquare(for: position) else { return }
+
+        guard let nextSquare = boardVM?.getNextSquare(position: position) else  {
+            if curSquare.isRemoving {
+                self.removeFromSuperview()
+            }
+            return
+        }
+        moveTile(to: nextSquare)
     }
     
     func moveTile(to square: SquareView) {
