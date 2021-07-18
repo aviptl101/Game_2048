@@ -95,6 +95,8 @@ class BoardModel {
                 let square = squaresList[row][col]
                 square.steps = 0
                 square.value = 0
+                square.isMerging = false
+                square.isRemoving = false
             }
         }
     }

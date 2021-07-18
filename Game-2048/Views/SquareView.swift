@@ -14,6 +14,8 @@ class SquareView: UIView {
     var value = 0
     // Number of steps respective Tile will move after swipeAction
     var steps = 0
+    var isMerging = false
+    var isRemoving = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
