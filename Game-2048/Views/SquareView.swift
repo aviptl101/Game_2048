@@ -16,6 +16,8 @@ class SquareView: UIView {
     var steps = 0
     var isMerging = false
     var isRemoving = false
+    // reference to the nearest square which is having Tile in the direction of swipe
+    var adjacentSquare: SquareView?
 
     override init(frame: CGRect) {
         super.init(frame: frame)

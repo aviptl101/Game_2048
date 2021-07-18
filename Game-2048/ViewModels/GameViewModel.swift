@@ -122,6 +122,7 @@ class GameViewModel {
     /// Evaluating square with its adjacent square in swipe direction to determine no. of steps for the current square
     /// 1. if adjacent square is empty, square's steps increase by one
     /// 2. if square and adSquare have same values, square's steps increase by one, square will Merge, adSquare will be removed
+    /// 3. if adSquare is empty, evaluating with nearest square which has Tile in the direction of Swipe
     func evaluateWithAdjacentSquare(square: SquareView?) {
         guard let curSquare = boardModel.curSquare else { return }
         guard let adjSquare = square else { return }
@@ -130,6 +131,13 @@ class GameViewModel {
         steps = adjSquare.steps
         if adjSquare.value == 0 {
             steps += 1
+        }
+        if boardModel.posValue == 0 {
+            curSquare.adjacentSquare = adjSquare.adjacentSquare == nil ? square : square?.adjacentSquare
+        } else if boardModel.posValue > 0 && adjSquare.value == 0 && boardModel.posValue == adjSquare.adjacentSquare?.value && !(adjSquare.adjacentSquare?.isMerging ?? false) {
+            steps += 1
+            curSquare.isMerging = true
+            adjSquare.adjacentSquare?.isRemoving = true
         }
         if boardModel.posValue > 0 && boardModel.posValue == adjSquare.value && !adjSquare.isMerging {
             steps += 1
