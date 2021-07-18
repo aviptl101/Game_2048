@@ -21,3 +21,8 @@ extension UIColor {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
 }
+
+extension Notification.Name {
+    static let swipeAction = Notification.Name("swipeAction")
+    static let updateBoard = Notification.Name("updateBoard")
+}
