@@ -11,6 +11,7 @@ import Foundation
 /// Squares are place holder for Tiles and represents corresponding Tile's value
 class BoardModel {
     var dimension = 4
+    var tilesCount = 0
     // Set curPosition to get values or adjacent squares of a square at particular position
     var curPosition = (row: 0, col: 0)
     var squaresList = [[SquareView]]()

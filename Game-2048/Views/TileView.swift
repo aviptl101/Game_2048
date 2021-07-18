@@ -8,7 +8,7 @@
 import UIKit
 
 class TileView: UIView {
-    weak var boardVM: GameViewModel?
+    weak var gameVM: GameViewModel?
     var position = (row: -1, col: -1)
     var value = 2 {
         didSet {
@@ -50,14 +50,14 @@ class TileView: UIView {
     }
     
     @objc func updateBoardValue() {
-        guard let curSquare = boardVM?.boardModel.getSquare(for: position) else { return }
+        guard let curSquare = gameVM?.boardModel.getSquare(for: position) else { return }
         curSquare.value = value
     }
 
     @objc func swipeAction() {
-        guard let curSquare = boardVM?.boardModel.getSquare(for: position) else { return }
+        guard let curSquare = gameVM?.boardModel.getSquare(for: position) else { return }
 
-        guard let nextSquare = boardVM?.getNextSquare(position: position) else  {
+        guard let nextSquare = gameVM?.getNextSquare(position: position) else  {
             if curSquare.isRemoving {
                 self.removeAction()
             }
@@ -67,7 +67,7 @@ class TileView: UIView {
     }
     
     func moveTile(to square: SquareView) {
-        guard let curSquare = boardVM?.boardModel.getSquare(for: position) else { return }
+        guard let curSquare = gameVM?.boardModel.getSquare(for: position) else { return }
         
         UIView.animate(withDuration: 0.2) {
             self.center = square.center
@@ -82,8 +82,7 @@ class TileView: UIView {
     }
     
     func removeAction() {
-        isHidden = true
-        value = 0
+        gameVM?.boardModel.tilesCount -= 1
         self.removeFromSuperview()
     }
     

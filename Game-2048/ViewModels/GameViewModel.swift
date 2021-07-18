@@ -203,9 +203,10 @@ class GameViewModel {
         let values = [2, 4]
         let randVal = values.randomElement()
         
+        boardModel.tilesCount += 1
         let tile = TileView(frame: randomSqr1.frame)
         tile.value = randVal ?? 2
-        tile.boardVM = self
+        tile.gameVM = self
         tile.position = randomSqr1.position
         tile.updateBoardValue()
         boardView.addSubview(tile)
@@ -224,10 +225,11 @@ class GameViewModel {
             let pos = positions[i]
             guard let sqr = boardModel.getSquare(for: pos) else { return }
             sqr.value = values[i]
-
+            
+            boardModel.tilesCount += 1
             let tile = TileView(frame: sqr.frame)
             tile.value = values[i]
-            tile.boardVM = self
+            tile.gameVM = self
             tile.position = sqr.position
             tile.updateBoardValue()
             boardView.addSubview(tile)
