@@ -14,7 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gameVM = GameViewModel(dimension: 4, view: boardView)
+        let boardModel = BoardModel(dimension: 4)
+        gameVM = GameViewModel(view: boardView, board: boardModel)
+        setupSwipeGestures()
     }
     
     func setupSwipeGestures() {

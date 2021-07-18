@@ -15,20 +15,21 @@ enum SwipeDirection {
 }
 
 class GameViewModel {
+    weak var boardView: UIView!
+    var boardModel: BoardModel!
     var swipeDirection = SwipeDirection.left
     var isSwipeLocked = false
     
-    var squaresList = [[SquareView]](repeating: [SquareView](repeating: SquareView(), count: 4), count: 4)
-    
-    var boardView: UIView!
     var dimension = 4
     
-    init(dimension: Int, view: UIView) {
-        self.dimension = dimension
+    init(view: UIView, board: BoardModel) {
         self.boardView = view
+        self.boardModel = board
+        self.dimension = board.dimension
+        setupSquareViews()
     }
     
-    func setupSquareViews() {
+    private func setupSquareViews() {
         let width = boardView.frame.width
         let maxTiles = CGFloat(dimension)
         let padding: CGFloat = 10
@@ -42,7 +43,7 @@ class GameViewModel {
             for col in 0..<dimension {
                 let square = SquareView(frame: CGRect(x: x_pos, y: y_pos, width: tileWidth, height: tileWidth))
                 square.position = (row: row, col: col)
-                squaresList[row][col] = square
+                boardModel.squaresList[row][col] = square
                 boardView.addSubview(square)
                 x_pos += padding + tileWidth
             }
