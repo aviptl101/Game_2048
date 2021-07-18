@@ -54,7 +54,27 @@ class GameViewModel {
     }
     
     func swipeAction(for direction: SwipeDirection) {
-        // TODO: make action calls
+        if !isSwipeLocked {
+            isSwipeLocked = true
+            swipeDirection = direction
+            
+            switch direction {
+            case .left:
+                calculateLeftSwipe()
+            case .right:
+                calculateRightSwipe()
+            case .up:
+                calculateUpSwipe()
+            case .down:
+                calculateDownSwipe()
+            }
+            //boardModel.displaySquareValues()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                self.isSwipeLocked = false
+                self.boardModel.resetValues()
+                self.boardModel.displaySquareValues()
+            }
+        }
     }
     
     /// calculating steps/moves for each square with Adjacent square in Swipe direction
@@ -94,7 +114,8 @@ class GameViewModel {
         }
     }
     
-    /// Evaluating square with its adjacent square in swipe direction to determine no. of steps for the square
+    /// Evaluation logic:
+    /// Evaluating square with its adjacent square in swipe direction to determine no. of steps for the current square
     /// 1. if adjacent square is empty, square's steps increase by one
     /// 2. if square and adSquare have same values, square's steps increase by one, square will Merge, adSquare will be removed
     func evaluateWithAdjacentSquare(square: SquareView?) {
@@ -106,8 +127,10 @@ class GameViewModel {
         if adjSquare.value == 0 {
             steps += 1
         }
-        if boardModel.posValue > 0 && boardModel.posValue == adjSquare.value {
+        if boardModel.posValue > 0 && boardModel.posValue == adjSquare.value && !adjSquare.isMerging {
             steps += 1
+            curSquare.isMerging = true
+            adjSquare.isRemoving = true
         }
         curSquare.steps = steps
     }
