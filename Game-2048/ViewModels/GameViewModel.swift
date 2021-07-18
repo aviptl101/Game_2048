@@ -25,4 +25,8 @@ class GameViewModel {
         self.dimension = dimension
         self.boardView = view
     }
+    
+    func swipeAction(for direction: SwipeDirection) {
+        
+    }
 }
