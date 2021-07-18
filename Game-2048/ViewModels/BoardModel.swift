@@ -69,6 +69,7 @@ class BoardModel {
     }
     
     func displaySquareValues() {
+        /*
         print("\n")
         for row in 0..<dimension {
             let square1 = squaresList[row][0]
@@ -78,6 +79,7 @@ class BoardModel {
 
             print("\(square1.steps) \(square2.steps) \(square3.steps) \(square4.steps)")
         }
+        */
         print("\n")
         for row in 0..<dimension {
             let square1 = squaresList[row][0]
