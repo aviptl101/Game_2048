@@ -10,11 +10,15 @@ import UIKit
 class TileView: UIView {
     weak var boardVM: GameViewModel?
     var position = (row: -1, col: -1)
-    var value = 2
+    var value = 2 {
+        didSet {
+            updateUI()
+        }
+    }
     
     private let valueLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        label.font = Constants.Fonts.tileFont
+        label.font = UIFont.tile.x
         label.textColor = .white
         label.textAlignment = .center
         label.lineBreakMode = .byCharWrapping
@@ -33,7 +37,7 @@ class TileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupTile() {
+    private func setupTile() {
         NotificationCenter.default.addObserver(self, selector: #selector(swipeAction), name: .swipeAction, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateBoardValue), name: .updateBoard, object: nil)
         
@@ -75,5 +79,24 @@ class TileView: UIView {
                 self.removeFromSuperview()
             }
         }
+    }
+    
+    func updateUI() {
+        DispatchQueue.main.async {
+            self.valueLabel.text = String(self.value)
+            if self.value > 10 && self.value < 99 {
+                self.valueLabel.font = UIFont.tile.x3
+            } else if self.value > 99 && self.value < 1000 {
+                self.valueLabel.font = UIFont.tile.x2
+            } else if self.value > 999 {
+                self.valueLabel.font = UIFont.tile.x
+            }
+        }
+    }
+    
+    deinit {
+        print("deleted \(value)")
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.swipeAction, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.updateBoard, object: nil)
     }
 }

@@ -10,7 +10,5 @@ import Foundation
 import UIKit
 
 struct Constants {
-    struct Fonts {
-        static let tileFont = UIFont.boldSystemFont(ofSize: 50)
-    }
+    
 }
