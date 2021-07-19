@@ -10,6 +10,7 @@
 		E10A1C9226A462FB001F6FF7 /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A1C9126A462FB001F6FF7 /* BoardModel.swift */; };
 		E10A1D4826A517CF001F6FF7 /* Game2048Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A1D4726A517CF001F6FF7 /* Game2048Tests.swift */; };
 		E10A1D5626A51C52001F6FF7 /* BoardModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A1D5526A51C52001F6FF7 /* BoardModelTests.swift */; };
+		E10A1D5C26A51E32001F6FF7 /* GameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A1D5B26A51E32001F6FF7 /* GameViewModelTests.swift */; };
 		E1E5A14D26A17168000409DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5A14C26A17168000409DC /* AppDelegate.swift */; };
 		E1E5A14F26A17168000409DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5A14E26A17168000409DC /* SceneDelegate.swift */; };
 		E1E5A15126A17168000409DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5A15026A17168000409DC /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 		E10A1D4726A517CF001F6FF7 /* Game2048Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game2048Tests.swift; sourceTree = "<group>"; };
 		E10A1D4926A517CF001F6FF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E10A1D5526A51C52001F6FF7 /* BoardModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModelTests.swift; sourceTree = "<group>"; };
+		E10A1D5B26A51E32001F6FF7 /* GameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelTests.swift; sourceTree = "<group>"; };
 		E1E5A14926A17168000409DC /* Game2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E5A14C26A17168000409DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1E5A14E26A17168000409DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				E10A1D4726A517CF001F6FF7 /* Game2048Tests.swift */,
 				E10A1D5526A51C52001F6FF7 /* BoardModelTests.swift */,
+				E10A1D5B26A51E32001F6FF7 /* GameViewModelTests.swift */,
 				E10A1D4926A517CF001F6FF7 /* Info.plist */,
 			);
 			path = Game2048Tests;
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10A1D5626A51C52001F6FF7 /* BoardModelTests.swift in Sources */,
+				E10A1D5C26A51E32001F6FF7 /* GameViewModelTests.swift in Sources */,
 				E10A1D4826A517CF001F6FF7 /* Game2048Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

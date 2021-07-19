@@ -217,7 +217,7 @@ class GameViewModel {
         boardView.addSubview(tile)
         
         checkGameOverStatus()
-        // Popup animation
+        // Popup animation for Tile Creation
         tile.transform = CGAffineTransform.identity.scaledBy(x: 0, y: 0)
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
             tile.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
@@ -254,17 +254,18 @@ class GameViewModel {
         gameOver?()
     }
     
-    func setTestTiles() {
-        var positions = [(0, 0), (0, 1), (0, 2), (0, 3)]
-        positions.append(contentsOf: [(1, 0), (1, 1), (1, 2), (1, 3)])
-        positions.append(contentsOf: [(2, 0), (2, 1), (2, 2), (2, 3)])
-        positions.append(contentsOf: [(3, 0), (3, 1), (3, 2), (3, 3)])
-
-        var values = [2, 2, 128, 1024]
-        values.append(contentsOf: [256, 4, 4, 8])
-        values.append(contentsOf: [32, 16, 16, 8])
-        values.append(contentsOf: [32, 512, 64, 64])
-
+    func setTestTiles(positions: [(Int, Int)], values: [Int]) {
+        
+//        var positions = [(0, 0), (0, 1), (0, 2), (0, 3)]
+//        positions.append(contentsOf: [(1, 0), (1, 1), (1, 2), (1, 3)])
+//        positions.append(contentsOf: [(2, 0), (2, 1), (2, 2), (2, 3)])
+//        positions.append(contentsOf: [(3, 0), (3, 1), (3, 2), (3, 3)])
+//
+//        var values = [2, 2, 128, 1024]
+//        values.append(contentsOf: [256, 4, 4, 8])
+//        values.append(contentsOf: [32, 16, 16, 8])
+//        values.append(contentsOf: [32, 512, 64, 64])
+        
         for i in 0..<positions.count {
             let pos = positions[i]
             guard let sqr = boardModel.getSquare(for: pos) else { return }

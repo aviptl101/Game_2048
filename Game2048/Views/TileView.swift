@@ -87,7 +87,7 @@ class TileView: UIView {
         self.value *= 2
         self.gameVM?.score += self.value
         
-        // ZoomIn-Out animation
+        // ZoomIn-Out animation for Merge action, the tile which is going to Merge will perform animation
         UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseIn, animations: {
             self.transform = CGAffineTransform.identity.scaledBy(x: 1.3, y: 1.3)
         }) { (finished) in

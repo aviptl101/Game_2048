@@ -6,27 +6,60 @@
 //
 
 import XCTest
+@testable import Game2048
 
 class GameViewModelTests: XCTestCase {
-
+    var gameVM: GameViewModel!
+    var boardView: UIView!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+        super.setUp()
 
+        let boardModel = BoardModel(dimension: 4)
+        boardView = UIView()
+        gameVM = GameViewModel(view: boardView, board: boardModel)
+    }
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testAddRandomTile() {
+        // Arrange
+        let numberOfTiles = gameVM.boardModel.tilesCount
+        
+        // ACT
+        gameVM.addRandomTile()
+        
+        // Assert
+        XCTAssertEqual(numberOfTiles + 1, gameVM.boardModel.tilesCount)
+    }
+    
+    func testSetTestTiles() {
+        // ACT
+        gameVM.setTestTiles()
+        
+        // Assert
+        XCTAssertEqual(1024, gameVM.boardModel.squaresList[0][3].value)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    func testCheckGameOverStatus() {
+        // Arrange
+        var positions = [(0, 0), (0, 1), (0, 2), (0, 3)]
+        positions.append(contentsOf: [(1, 0), (1, 1), (1, 2), (1, 3)])
+        positions.append(contentsOf: [(2, 0), (2, 1), (2, 2), (2, 3)])
+        positions.append(contentsOf: [(3, 0), (3, 1), (3, 2), (3, 3)])
 
+        var values = [2, 4, 2, 4]
+        values.append(contentsOf: [4, 2, 4, 2])
+        values.append(contentsOf: [2, 4, 2, 4])
+        values.append(contentsOf: [4, 2, 4, 2])
+        gameVM.setTestTilesWith(positions: positions, values: values)
+        
+        // ACT
+        gameVM.checkGameOverStatus()
+        
+        // Assert
+        XCTAssertEqual(gameVM.isGameOver, true)
+    }
 }
