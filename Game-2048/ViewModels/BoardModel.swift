@@ -120,7 +120,7 @@ class BoardModel {
         for row in 0..<dimension {
             for col in 0..<dimension {
                 let square = squaresList[row][col]
-                if square.value > 0 && square.steps > 0 {
+                if square.value == 0 || square.steps > 0 {
                     return true
                 }
             }

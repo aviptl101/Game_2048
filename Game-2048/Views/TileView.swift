@@ -59,6 +59,7 @@ class TileView: UIView {
 
         guard let nextSquare = gameVM?.getNextSquare(position: position) else {
             if curSquare.isRemoving {
+                self.decrementTilesCount()
                 self.removeAction()
             }
             return
@@ -76,6 +77,7 @@ class TileView: UIView {
             if curSquare.isMerging {
                 self.mergeAction()
             } else if curSquare.isRemoving {
+                self.decrementTilesCount()
                 self.removeAction()
             }
         }
@@ -95,10 +97,13 @@ class TileView: UIView {
     }
     
     func removeAction() {
-        gameVM?.boardModel.tilesCount -= 1
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.tileMoveDuration) {
             self.removeFromSuperview()
         }
+    }
+    
+    func decrementTilesCount() {
+        gameVM?.boardModel.tilesCount -= 1
     }
     
     private func updateUI() {
@@ -137,6 +142,10 @@ class TileView: UIView {
                 self.backgroundColor = .s256
             case 512:
                 self.backgroundColor = .s512
+            case 1024:
+                self.backgroundColor = .s1024
+            case 2048:
+                self.backgroundColor = .s2048
             default:
                 self.backgroundColor = .s128
             }

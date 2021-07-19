@@ -217,17 +217,17 @@ class GameViewModel {
         tile.updateBoardValue()
         boardView.addSubview(tile)
         
+        checkGameOverStatus()
         // Popup animation
         tile.transform = CGAffineTransform.identity.scaledBy(x: 0, y: 0)
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
             tile.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
         })
-        checkGameOverStatus()
     }
     
     func checkGameOverStatus() {
         // GameOver check after adding newTile, if Board has become full
-        guard boardModel.tilesCount == (dimension * dimension) else { return }
+        guard boardModel.tilesCount > ((2*dimension) + dimension) else { return }
         
         let directions: [SwipeDirection] = [.left, .right, .up, .down]
         for direction in directions {
@@ -263,9 +263,9 @@ class GameViewModel {
         positions.append(contentsOf: [(3, 0), (3, 1), (3, 2), (3, 3)])
 
         var values = [2, 2, 128, 1024]
-        values.append(contentsOf: [2, 4, 4, 8])
+        values.append(contentsOf: [256, 4, 4, 8])
         values.append(contentsOf: [32, 16, 16, 8])
-        values.append(contentsOf: [32, 16, 64, 64])
+        values.append(contentsOf: [32, 512, 64, 64])
 //        var values = [2, 8, 2, 8]
 //        values.append(contentsOf: [4, 2, 4, 2])
 //        values.append(contentsOf: [2, 8, 2, 8])
