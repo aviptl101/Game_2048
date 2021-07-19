@@ -33,6 +33,18 @@ class GameViewModel {
         setupSquareViews()
     }
     
+    func startNewGame() {
+        boardModel.resetValues()
+        // Removing all tiles from the view before starting new game
+        for subView in boardView.subviews {
+            if subView.isKind(of: TileView.self) {
+                subView.removeFromSuperview()
+            }
+        }
+        addRandomTile()
+        addRandomTile()
+    }
+    
     /// Placing squares in boardView according to rows and columns for DxD matrix form
     private func setupSquareViews() {
         let width = boardView.frame.width

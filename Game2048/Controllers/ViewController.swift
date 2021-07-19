@@ -18,15 +18,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        newGameAction()
-        setupSwipeGestures()
-    }
-    
-    @IBAction func newGameAction() {
-        gameOverLabel.isHidden = true
-        scoreLbl.text = String(0)
-        setBestScore()
-
         let boardModel = BoardModel(dimension: 4)
         gameVM = GameViewModel(view: boardView, board: boardModel)
         gameVM.updateScore = { score in
@@ -37,6 +28,17 @@ class ViewController: UIViewController {
             self.gameOverLabel.isHidden = false
         }
         //gameVM.setTestTiles()
+        
+        newGameAction()
+        setupSwipeGestures()
+    }
+    
+    @IBAction func newGameAction() {
+        gameOverLabel.isHidden = true
+        scoreLbl.text = String(0)
+        setBestScore()
+        
+        gameVM.startNewGame()
     }
     
     func setupSwipeGestures() {
