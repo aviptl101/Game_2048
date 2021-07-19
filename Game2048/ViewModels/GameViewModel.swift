@@ -93,7 +93,7 @@ class GameViewModel {
         }
         self.isSwipeLocked = false
         updateScore?(score)
-        self.boardModel.displaySquareValues()
+        //self.boardModel.displaySquareValues()
     }
     
     /// calculating steps/moves for each square with respect to Adjacent square in Swipe direction

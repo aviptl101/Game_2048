@@ -153,7 +153,7 @@ class TileView: UIView {
     }
     
     deinit {
-        print("deleted \(value)")
+        //print("deleted \(value)")
         NotificationCenter.default.removeObserver(self, name: Notification.Name.swipeAction, object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name.updateBoard, object: nil)
     }
