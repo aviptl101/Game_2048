@@ -10,9 +10,10 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var boardView: UIView!
     @IBOutlet weak var scoreLbl: UILabel!
-    @IBOutlet weak var bestScoreLbl: UIView!
+    @IBOutlet weak var bestScoreLbl: UILabel!
     @IBOutlet weak var gameOverLabel: UILabel!
     var gameVM: GameViewModel!
+    var score = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +23,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func newGameAction() {
-        self.gameOverLabel.isHidden = true
-        
+        gameOverLabel.isHidden = true
+        scoreLbl.text = String(0)
+        setBestScore()
+
         let boardModel = BoardModel(dimension: 4)
         gameVM = GameViewModel(view: boardView, board: boardModel)
         gameVM.updateScore = { score in
             self.scoreLbl.text = String(score)
+            self.score = score
         }
         gameVM.gameOver = {
             self.gameOverLabel.isHidden = false
@@ -69,6 +73,21 @@ class ViewController: UIViewController {
             gameVM.swipeAction(for: .down)
         default:
             gameVM.swipeAction(for: .left)
+        }
+    }
+    
+    func setBestScore() {
+        if UserDefaults.standard.value(forKey: "bestScore") == nil {
+            //bestScoreLbl.text = String(score)
+            UserDefaults.standard.setValue(score, forKey: "bestScore")
+        } else {
+            let bestScore = UserDefaults.standard.value(forKey: "bestScore") as! Int
+            if score > bestScore {
+                bestScoreLbl.text = String(score)
+                UserDefaults.standard.setValue(score, forKey: "bestScore")
+            } else {
+                bestScoreLbl.text = String(bestScore)
+            }
         }
     }
 }
