@@ -57,7 +57,6 @@ class GameViewModel {
         }
         addRandomTile()
         addRandomTile()
-//        self.setTestTiles()
     }
     
     func swipeAction(for direction: SwipeDirection) {
@@ -78,7 +77,7 @@ class GameViewModel {
             }
             //boardModel.displaySquareValues()
             NotificationCenter.default.post(name: .swipeAction, object: nil)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.swipeCompletionDelay) {
                 self.swipeActionCompletion()
             }
         }
@@ -97,7 +96,7 @@ class GameViewModel {
         self.boardModel.displaySquareValues()
     }
     
-    /// calculating steps/moves for each square with Adjacent square in Swipe direction
+    /// calculating steps/moves for each square with respect to Adjacent square in Swipe direction
     func calculateLeftSwipe() {
         for row in 0..<dimension {
             for col in 1..<dimension {
@@ -226,7 +225,7 @@ class GameViewModel {
     }
     
     func checkGameOverStatus() {
-        // GameOver check after adding newTile, if Board has become full
+        // GameOver check after adding newTile, if Board has become full: if tilesCount > 12
         guard boardModel.tilesCount > ((2*dimension) + dimension) else { return }
         
         let directions: [SwipeDirection] = [.left, .right, .up, .down]
@@ -247,7 +246,6 @@ class GameViewModel {
                 return
             }
         }
-        
         presentGameOver()
     }
     
@@ -266,10 +264,6 @@ class GameViewModel {
         values.append(contentsOf: [256, 4, 4, 8])
         values.append(contentsOf: [32, 16, 16, 8])
         values.append(contentsOf: [32, 512, 64, 64])
-//        var values = [2, 8, 2, 8]
-//        values.append(contentsOf: [4, 2, 4, 2])
-//        values.append(contentsOf: [2, 8, 2, 8])
-//        values.append(contentsOf: [4, 2, 4, 2])
 
         for i in 0..<positions.count {
             let pos = positions[i]
