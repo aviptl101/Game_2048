@@ -85,13 +85,13 @@ class GameViewModel {
     
     /// On swipeAction complete: board update, add new Tiles (only if Board state changed )
     func swipeActionCompletion() {
-        self.isSwipeLocked = false
         let state = boardModel.getBoardState()
         self.boardModel.resetValues()
         NotificationCenter.default.post(name: .updateBoard, object: nil)
         if state != boardModel.getBoardState() {
             self.addRandomTile()
         }
+        self.isSwipeLocked = false
         updateScore?(score)
         self.boardModel.displaySquareValues()
     }
@@ -219,7 +219,7 @@ class GameViewModel {
         checkGameOverStatus()
         // Popup animation for Tile Creation
         tile.transform = CGAffineTransform.identity.scaledBy(x: 0, y: 0)
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveEaseInOut, animations: {
             tile.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
         })
     }

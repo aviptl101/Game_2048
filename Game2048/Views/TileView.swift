@@ -97,7 +97,7 @@ class TileView: UIView {
     }
     
     func removeAction() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.tileMoveDuration) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.removeFromSuperview()
         }
     }
