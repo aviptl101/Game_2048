@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E10A1C9226A462FB001F6FF7 /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A1C9126A462FB001F6FF7 /* BoardModel.swift */; };
+		E10A1D4826A517CF001F6FF7 /* Game2048Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A1D4726A517CF001F6FF7 /* Game2048Tests.swift */; };
 		E1E5A14D26A17168000409DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5A14C26A17168000409DC /* AppDelegate.swift */; };
 		E1E5A14F26A17168000409DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5A14E26A17168000409DC /* SceneDelegate.swift */; };
 		E1E5A15126A17168000409DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5A15026A17168000409DC /* ViewController.swift */; };
@@ -21,9 +22,22 @@
 		E1E5A18326A3477E000409DC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5A18226A3477E000409DC /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E10A1D4A26A517CF001F6FF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1E5A14126A17168000409DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1E5A14826A17168000409DC;
+			remoteInfo = Game2048;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		E10A1C9126A462FB001F6FF7 /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
-		E1E5A14926A17168000409DC /* Game-2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game-2048.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10A1D4526A517CF001F6FF7 /* Game2048Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Game2048Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10A1D4726A517CF001F6FF7 /* Game2048Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game2048Tests.swift; sourceTree = "<group>"; };
+		E10A1D4926A517CF001F6FF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1E5A14926A17168000409DC /* Game2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E5A14C26A17168000409DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1E5A14E26A17168000409DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E1E5A15026A17168000409DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +53,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E10A1D4226A517CF001F6FF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1E5A14626A17168000409DC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,10 +70,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E10A1D4626A517CF001F6FF7 /* Game2048Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E10A1D4726A517CF001F6FF7 /* Game2048Tests.swift */,
+				E10A1D4926A517CF001F6FF7 /* Info.plist */,
+			);
+			path = Game2048Tests;
+			sourceTree = "<group>";
+		};
 		E1E5A14026A17168000409DC = {
 			isa = PBXGroup;
 			children = (
-				E1E5A14B26A17168000409DC /* Game-2048 */,
+				E1E5A14B26A17168000409DC /* Game2048 */,
+				E10A1D4626A517CF001F6FF7 /* Game2048Tests */,
 				E1E5A14A26A17168000409DC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,12 +91,13 @@
 		E1E5A14A26A17168000409DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1E5A14926A17168000409DC /* Game-2048.app */,
+				E1E5A14926A17168000409DC /* Game2048.app */,
+				E10A1D4526A517CF001F6FF7 /* Game2048Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E1E5A14B26A17168000409DC /* Game-2048 */ = {
+		E1E5A14B26A17168000409DC /* Game2048 */ = {
 			isa = PBXGroup;
 			children = (
 				E1E5A16F26A1F2ED000409DC /* Controllers */,
@@ -79,7 +111,7 @@
 				E1E5A15726A17169000409DC /* LaunchScreen.storyboard */,
 				E1E5A15A26A17169000409DC /* Info.plist */,
 			);
-			path = "Game-2048";
+			path = Game2048;
 			sourceTree = "<group>";
 		};
 		E1E5A16F26A1F2ED000409DC /* Controllers */ = {
@@ -120,9 +152,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E1E5A14826A17168000409DC /* Game-2048 */ = {
+		E10A1D4426A517CF001F6FF7 /* Game2048Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1E5A15D26A17169000409DC /* Build configuration list for PBXNativeTarget "Game-2048" */;
+			buildConfigurationList = E10A1D4E26A517CF001F6FF7 /* Build configuration list for PBXNativeTarget "Game2048Tests" */;
+			buildPhases = (
+				E10A1D4126A517CF001F6FF7 /* Sources */,
+				E10A1D4226A517CF001F6FF7 /* Frameworks */,
+				E10A1D4326A517CF001F6FF7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E10A1D4B26A517CF001F6FF7 /* PBXTargetDependency */,
+			);
+			name = Game2048Tests;
+			productName = Game2048Tests;
+			productReference = E10A1D4526A517CF001F6FF7 /* Game2048Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E1E5A14826A17168000409DC /* Game2048 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1E5A15D26A17169000409DC /* Build configuration list for PBXNativeTarget "Game2048" */;
 			buildPhases = (
 				E1E5A14526A17168000409DC /* Sources */,
 				E1E5A14626A17168000409DC /* Frameworks */,
@@ -132,9 +182,9 @@
 			);
 			dependencies = (
 			);
-			name = "Game-2048";
+			name = Game2048;
 			productName = "Game-2048";
-			productReference = E1E5A14926A17168000409DC /* Game-2048.app */;
+			productReference = E1E5A14926A17168000409DC /* Game2048.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -146,12 +196,16 @@
 				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
+					E10A1D4426A517CF001F6FF7 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = E1E5A14826A17168000409DC;
+					};
 					E1E5A14826A17168000409DC = {
 						CreatedOnToolsVersion = 12.1;
 					};
 				};
 			};
-			buildConfigurationList = E1E5A14426A17168000409DC /* Build configuration list for PBXProject "Game-2048" */;
+			buildConfigurationList = E1E5A14426A17168000409DC /* Build configuration list for PBXProject "Game2048" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -164,12 +218,20 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E1E5A14826A17168000409DC /* Game-2048 */,
+				E1E5A14826A17168000409DC /* Game2048 */,
+				E10A1D4426A517CF001F6FF7 /* Game2048Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E10A1D4326A517CF001F6FF7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1E5A14726A17168000409DC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,6 +245,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E10A1D4126A517CF001F6FF7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E10A1D4826A517CF001F6FF7 /* Game2048Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1E5A14526A17168000409DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -200,6 +270,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E10A1D4B26A517CF001F6FF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1E5A14826A17168000409DC /* Game2048 */;
+			targetProxy = E10A1D4A26A517CF001F6FF7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E1E5A15226A17168000409DC /* Main.storyboard */ = {
@@ -221,6 +299,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E10A1D4C26A517CF001F6FF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 947K2FPWHH;
+				INFOPLIST_FILE = Game2048Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Avinash.Game2048Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Game2048.app/Game2048";
+			};
+			name = Debug;
+		};
+		E10A1D4D26A517CF001F6FF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 947K2FPWHH;
+				INFOPLIST_FILE = Game2048Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Avinash.Game2048Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Game2048.app/Game2048";
+			};
+			name = Release;
+		};
 		E1E5A15B26A17169000409DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -344,7 +462,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 947K2FPWHH;
-				INFOPLIST_FILE = "Game-2048/Info.plist";
+				INFOPLIST_FILE = Game2048/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,7 +481,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 947K2FPWHH;
-				INFOPLIST_FILE = "Game-2048/Info.plist";
+				INFOPLIST_FILE = Game2048/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,7 +496,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E1E5A14426A17168000409DC /* Build configuration list for PBXProject "Game-2048" */ = {
+		E10A1D4E26A517CF001F6FF7 /* Build configuration list for PBXNativeTarget "Game2048Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E10A1D4C26A517CF001F6FF7 /* Debug */,
+				E10A1D4D26A517CF001F6FF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1E5A14426A17168000409DC /* Build configuration list for PBXProject "Game2048" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1E5A15B26A17169000409DC /* Debug */,
@@ -387,7 +514,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1E5A15D26A17169000409DC /* Build configuration list for PBXNativeTarget "Game-2048" */ = {
+		E1E5A15D26A17169000409DC /* Build configuration list for PBXNativeTarget "Game2048" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1E5A15E26A17169000409DC /* Debug */,
