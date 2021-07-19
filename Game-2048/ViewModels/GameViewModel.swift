@@ -55,8 +55,8 @@ class GameViewModel {
             }
             y_pos += padding + tileWidth
         }
-//        addRandomTile()
-//        addRandomTile()
+        addRandomTile()
+        addRandomTile()
 //        self.setTestTiles()
     }
     
@@ -216,6 +216,12 @@ class GameViewModel {
         tile.position = randomSqr1.position
         tile.updateBoardValue()
         boardView.addSubview(tile)
+        
+        // Popup animation
+        tile.transform = CGAffineTransform.identity.scaledBy(x: 0, y: 0)
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+            tile.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
+        })
         checkGameOverStatus()
     }
     

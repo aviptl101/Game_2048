@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         gameVM.gameOver = {
             self.gameOverLabel.isHidden = false
         }
-        gameVM.setTestTiles()
+        //gameVM.setTestTiles()
     }
     
     func setupSwipeGestures() {

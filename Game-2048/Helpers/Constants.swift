@@ -10,5 +10,6 @@ import Foundation
 import UIKit
 
 struct Constants {
-    
+    static let swipeCompletionDelay = 0.4
+    static let tileMoveDuration = 0.2
 }

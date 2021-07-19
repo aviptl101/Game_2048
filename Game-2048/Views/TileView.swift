@@ -59,7 +59,9 @@ class TileView: UIView {
 
         guard let nextSquare = gameVM?.getNextSquare(position: position) else  {
             if curSquare.isRemoving {
-                self.removeAction()
+                DispatchQueue.main.asyncAfter(deadline: .now() + Constants.tileMoveDuration) {
+                    self.removeAction()
+                }
             }
             return
         }
@@ -69,17 +71,29 @@ class TileView: UIView {
     func moveTile(to square: SquareView) {
         guard let curSquare = gameVM?.boardModel.getSquare(for: position) else { return }
         
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: Constants.tileMoveDuration) {
             self.center = square.center
         } completion: { (status) in
             self.position = square.position
             if curSquare.isMerging {
-                self.value *= 2
-                self.gameVM?.score += self.value
+                self.mergeAction()
             } else if curSquare.isRemoving {
                 self.removeAction()
             }
         }
+    }
+    
+    func mergeAction() {
+        self.value *= 2
+        self.gameVM?.score += self.value
+        
+        // ZoomIn-Out animation
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseIn, animations: {
+            self.transform = CGAffineTransform.identity.scaledBy(x: 1.3, y: 1.3)
+        }) { (finished) in
+            UIView.animate(withDuration: 0.1, animations: {
+            self.transform = CGAffineTransform.identity
+        }) }
     }
     
     func removeAction() {
