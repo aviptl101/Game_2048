@@ -16,11 +16,11 @@ extension UIColor {
     static let s32 = UIColor(netHex: 0x50FFB5)
     static let s64 = UIColor(netHex: 0x00FFFE)
 
-    static let s128 = UIColor(netHex: 0x0DB2FF)
-    static let s256 = UIColor(netHex: 0x0DB2FF)
-    static let s512 = UIColor(netHex: 0x0DB2FF)
-    static let s1024 = UIColor(netHex: 0x0DB2FF)
-    static let s2048 = UIColor(netHex: 0x0DB2FF)
+    static let s128 = UIColor(netHex: 0xFFCA5A)
+    static let s256 = UIColor(netHex: 0xFFBA50)
+    static let s512 = UIColor(netHex: 0xFFDD18)
+    static let s1024 = UIColor(netHex: 0xFFDC10)
+    static let s2048 = UIColor(netHex: 0xFFDC10)
     
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
