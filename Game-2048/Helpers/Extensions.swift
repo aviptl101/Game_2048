@@ -36,10 +36,10 @@ extension UIColor {
 
 extension UIFont {
     struct tile {
-        static let x = UIFont(name: "Verdana-Bold", size: 30)
-        static let x2 = UIFont(name: "Verdana-Bold", size: 35)
-        static let x3 = UIFont(name: "Verdana-Bold", size: 40)
-        static let x4 = UIFont(name: "Verdana-Bold", size: 45)
+        static let x = UIFont(name: "Verdana-Bold", size: 25)
+        static let x2 = UIFont(name: "Verdana-Bold", size: 30)
+        static let x3 = UIFont(name: "Verdana-Bold", size: 35)
+        static let x4 = UIFont(name: "Verdana-Bold", size: 40)
     }
 }
 
