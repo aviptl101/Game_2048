@@ -57,11 +57,9 @@ class TileView: UIView {
     @objc func swipeAction() {
         guard let curSquare = gameVM?.boardModel.getSquare(for: position) else { return }
 
-        guard let nextSquare = gameVM?.getNextSquare(position: position) else  {
+        guard let nextSquare = gameVM?.getNextSquare(position: position) else {
             if curSquare.isRemoving {
-                DispatchQueue.main.asyncAfter(deadline: .now() + Constants.tileMoveDuration) {
-                    self.removeAction()
-                }
+                self.removeAction()
             }
             return
         }
@@ -98,7 +96,9 @@ class TileView: UIView {
     
     func removeAction() {
         gameVM?.boardModel.tilesCount -= 1
-        self.removeFromSuperview()
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.tileMoveDuration) {
+            self.removeFromSuperview()
+        }
     }
     
     private func updateUI() {
