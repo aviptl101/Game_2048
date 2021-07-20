@@ -16,7 +16,7 @@ class TileView: UIView {
         }
     }
     
-    private let valueLabel: UILabel = {
+    private lazy var valueLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         label.font = UIFont.tile.x4
         label.textColor = .white

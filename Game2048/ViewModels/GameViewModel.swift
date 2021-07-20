@@ -149,7 +149,7 @@ class GameViewModel {
     /// Evaluating square with its adjacent square in swipe direction to determine no. of steps for the current square
     /// 1. if adjacent square is empty, square's steps increase by one
     /// 2. if square and adSquare have same values, square's steps increase by one, square will Merge, adSquare will be removed
-    /// 3. if adSquare is empty, evaluating with nearest square which has Tile in the direction of Swipe
+    /// 3. if adSquare is empty, evaluating with nearest square which has Tile in the direction of Swipe, nearest square is declared as adjSquare
     func evaluateWithAdjacentSquare(square: SquareView?) {
         guard let curSquare = boardModel.curSquare else { return }
         guard let adjSquare = square else { return }
@@ -240,6 +240,8 @@ class GameViewModel {
         // GameOver check after adding newTile, if Board has become full: if tilesCount > 12
         guard boardModel.tilesCount > ((2*dimension) + dimension) else { return }
         
+        // To evaluate if Game is Over, we manually call calculate for all 4 directions
+        // after each call, we check if board state has any change, Game is over if no change
         let directions: [SwipeDirection] = [.left, .right, .up, .down]
         for direction in directions {
             switch direction {
