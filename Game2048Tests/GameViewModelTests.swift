@@ -36,8 +36,19 @@ class GameViewModelTests: XCTestCase {
     }
     
     func testSetTestTiles() {
+        // Arrange
+        var positions = [(0, 0), (0, 1), (0, 2), (0, 3)]
+        positions.append(contentsOf: [(1, 0), (1, 1), (1, 2), (1, 3)])
+        positions.append(contentsOf: [(2, 0), (2, 1), (2, 2), (2, 3)])
+        positions.append(contentsOf: [(3, 0), (3, 1), (3, 2), (3, 3)])
+
+        var values = [2, 4, 2, 1024]
+        values.append(contentsOf: [4, 2, 4, 2])
+        values.append(contentsOf: [2, 4, 2, 4])
+        values.append(contentsOf: [4, 2, 4, 2])
+        
         // ACT
-        gameVM.setTestTiles()
+        gameVM.setTestTiles(positions: positions, values: values)
         
         // Assert
         XCTAssertEqual(1024, gameVM.boardModel.squaresList[0][3].value)
@@ -54,7 +65,7 @@ class GameViewModelTests: XCTestCase {
         values.append(contentsOf: [4, 2, 4, 2])
         values.append(contentsOf: [2, 4, 2, 4])
         values.append(contentsOf: [4, 2, 4, 2])
-        gameVM.setTestTilesWith(positions: positions, values: values)
+        gameVM.setTestTiles(positions: positions, values: values)
         
         // ACT
         gameVM.checkGameOverStatus()
